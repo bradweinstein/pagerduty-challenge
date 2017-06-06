@@ -4,7 +4,7 @@ PagerDuty (pronounced *pay+juh doo-tee*) is full-stack event intelligence and th
 
 Organizations taking advantage of the PagerDuty platform can visualize the health of services, infrastructure, and manage incident resolution all in one place. It provides actionable full-stack visibility and response orchestration to minimize cognitive load during alert investigation and identify the business impact of significant incidents.
 
-<p align="center"><img width=55% src="https://github.com/bradweinstein/"></p>
+<p align="center"><img width=55% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdlogo.png"></p>
 
 
 ## Main features
@@ -22,27 +22,30 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
  
 1. Create	a	Trial	PagerDuty	Account	
 2. Account	Setup	(Follow	the	steps	below)
-  a. Create	a	Team using	the	API
-  b. Add	5 Users	to	that	team using	the	API
-  c. Create	a	simple	on-call	schedule	among	the	5 users	through the	UI
-  d. Create	an	Escalation	Policy using	the	API
-  e. Setup	contact	methods	for	2	user	profiles through the	UI
-  f. Create	a	Service using	the	API
-3. Incident	Response	Workflow	(Follow	the	steps	below)
-  a. Trigger	an	incident	using	the	API
-  b. Acknowledge	the	Incident	via	Push Notification on	the	PagerDuty	mobile	app
-  c. Using	Response	Mobilizer capability,	add	a	couple	users to	the	incident
-  d. Using	Subscribers Notification capability,	send	status	update	to	a	couple	of	users
-  e. Add	notes	to	the	incident
-  f. Resolve	the	Incident	via	the	PagerDuty	mobile	app
+   a. Create	a	Team using	the	API
+   b. Add	5 Users	to	that	team using	the	API
+   c. Create	a	simple	on-call	schedule	among	the	5 users	through the	UI
+   d. Create	an	Escalation	Policy using	the	API
+   e. Setup	contact	methods	for	2	user	profiles through the	UI 
+   f. Create	a	Service using	the	API
+3. Incident	Response	Workflow	(Follow	the	steps	below) 
+   a. Trigger	an	incident	using	the	API 
+   b. Acknowledge	the	Incident	via	Push Notification on	the	PagerDuty	mobile	app
+   c. Using	Response	Mobilizer capability,	add	a	couple	users to	the	incident
+   d. Using	Subscribers Notification capability,	send	status	update	to	a	couple	of	users
+   e. Add	notes	to	the	incident
+   f. Resolve	the	Incident	via	the	PagerDuty	mobile	app
+  
 4. Get	a	list	of	log	entries	using	the	API
   Once	completed,	send	us	your	PagerDuty	account	URL	(ex.	pdt-user.pagerduty.com) as	well	as	
   the	Log	Entries	output	in	Step	4.
 
 
-## Level 0 - Setup
+## Setup
 
 ### Create PagerDuty trial
+
+
 
  
 ## Account Setup
