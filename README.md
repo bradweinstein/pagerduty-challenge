@@ -19,26 +19,27 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 
 
 ## Table of Contents
+
+* [Setup](#setup)
+  * [Trial Creation](#create-pagerduty-trial)
+* [Account Setup](#account-setup)
+  * [Creating a team via API](#creating-a-team-via-api)
+  * [Adding Users](#adding-5-users-to-team-using-api)
+  * [Creating an on-call schedule](#create-a-on-call-schedule-among-5-users-through-ui)
+  * [Creating an escalation policy via API](#create-an-escalation-policy-using-api)
+  * [Creating user profiles](#setup-contact-methods-for-2-user-profiles-through-ui)
+  * [Creating user profiles](#create-a-service-using-the-api)
+* [Incident Response Workflow](#incident-response-workflow)
+  * [Triggering an incident via PagerDuty API](#triggering-an-incident)
+  * [Acknowleding Incidents via PagerDuty mobile](#acknowledge-the-incident)
+  * [Using Response Mobilizer](#using-response-mobilizer)
+  * [Using Subscribers Notification](#using-subscriber-notification)
+  * [Adding notes](#adding-notes)
+  * [Resolving via PagerDuty mobile](#resolving-via-mobile-app)
+* [Log Entries](#log-entries-via-api)
+* [Conclusion](#conclusion)
+* [Helpful Links](#helpful-links)
  
-1. Create	a	Trial	PagerDuty	Account	
-2. Account	Setup	(Follow	the	steps	below)
-   a. Create	a	Team using	the	API
-   b. Add	5 Users	to	that	team using	the	API
-   c. Create	a	simple	on-call	schedule	among	the	5 users	through the	UI
-   d. Create	an	Escalation	Policy using	the	API
-   e. Setup	contact	methods	for	2	user	profiles through the	UI 
-   f. Create	a	Service using	the	API
-3. Incident	Response	Workflow	(Follow	the	steps	below) 
-   a. Trigger	an	incident	using	the	API 
-   b. Acknowledge	the	Incident	via	Push Notification on	the	PagerDuty	mobile	app
-   c. Using	Response	Mobilizer capability,	add	a	couple	users to	the	incident
-   d. Using	Subscribers Notification capability,	send	status	update	to	a	couple	of	users
-   e. Add	notes	to	the	incident
-   f. Resolve	the	Incident	via	the	PagerDuty	mobile	app
-  
-4. Get	a	list	of	log	entries	using	the	API
-  Once	completed,	send	us	your	PagerDuty	account	URL	(ex.	pdt-user.pagerduty.com) as	well	as	
-  the	Log	Entries	output	in	Step	4.
 
 
 ## Setup
