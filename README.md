@@ -46,8 +46,24 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 
 ### Create PagerDuty trial
 
+Trial account created under `bradwtesting.pagerduty.com` at PagerDuty.com
+
+<img width=15% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsignup.png">
+
+Skipped through configuration wizard and enabled platform API access. I will be using PagerDuty's API v2, and associated documentation can be found [here](https://v2.developer.pagerduty.com).
+
+<p align="left"><img width=20% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdapiaccess.png"></p>
+
+API v2 access keys can be viewed and created under Configuration > API Access. I've created a v2 read/write key for the purposes of this exercise.
+
+<p align="left"><img width=40% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdexampleapi.png"></p>
 
 
+ 
+ 
+ 
+ 
+ 
  
 ## Account Setup
 
@@ -94,3 +110,4 @@ If there are any questions please feel free to reach out via [email](mailto:brad
 
 
 ##### Helpful Links
+* [PagerDuty API v2](https://v2.developer.pagerduty.com)
