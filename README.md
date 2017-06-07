@@ -70,7 +70,7 @@ API v2 access keys can be viewed and created under Configuration > API Access. I
 ### Creating a team via API
 
 ```JSON
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=AsVfEvBH6xYgUcSJVqPz' -d '{
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
   "team": {
     "type": "team",
     "name": "Grognards",
@@ -82,6 +82,32 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 
 ### Adding 5 users to team using API
+
+Created 5 users using the API, then added them to the team.
+```JSON
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
+  "user": {
+    "type": "user",
+    "name": "brad-[1-5]",
+    "email": "[PRIVATE EMAIL]",
+    "time_zone": "America/New_York",
+    "color": "green",
+    "role": "admin",
+    "job_title": "DevOps Wizard",
+    "description": "User[1-5]"
+  }
+}' 'https://api.pagerduty.com/users'
+```
+<p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddusersnoteam.png"></p>
+
+
+For each user, they were added to the Grognards team.
+
+```JSON
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' 'https://api.pagerduty.com/teams/[TEAMID]/users/[USERID]'
+```
+<p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddusersteammed.png"></p>
+
 
 ### Create a on-call schedule among 5 users through UI
 
