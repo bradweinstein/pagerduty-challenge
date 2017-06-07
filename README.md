@@ -69,6 +69,18 @@ API v2 access keys can be viewed and created under Configuration > API Access. I
 
 ### Creating a team via API
 
+```JSON
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=AsVfEvBH6xYgUcSJVqPz' -d '{
+  "team": {
+    "type": "team",
+    "name": "Grognards",
+    "description": "Devops Team"
+  }
+}' 'https://api.pagerduty.com/teams'
+```
+<p align="left"><img width=75% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdteamsapi.png"></p>
+
+
 ### Adding 5 users to team using API
 
 ### Create a on-call schedule among 5 users through UI
