@@ -78,7 +78,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   }
 }' 'https://api.pagerduty.com/teams'
 ```
-<p align="left"><img width=75% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdteamsapi.png"></p>
+<p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdteamsapi.png"></p>
 
 
 ### Adding 5 users to team using API
