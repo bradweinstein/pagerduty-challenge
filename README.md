@@ -12,7 +12,7 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 * The Pagerduty platform collects events from monitoring systems, triages what’s important, and involves the right people for a faster incident resolution response.
 * Uses big-data visualizations to allow insight into the health of applications, services, and infrastructure while managing incident response workflows all in one place.
 * Inspects the performance and efficiency from system level down to the user level. Pagerduty can be optimized to generate reports to measure operational efficiency, user productivity, and trends and patterns of recurring incidents.
-* Includes Built-in integrations with ITSM and ChatOps tools to recruit, collaborate, and share knowledge. Go beyond your on-call responders and mobilize experts to quickly address incidents in real time.
+* Includes built-in integrations with ITSM and ChatOps tools to recruit, collaborate, and share knowledge. Go beyond your on-call responders and mobilize experts to quickly address incidents in real time.
 * PagerDuty is an always-on solution with guaranteed delivery by using globally distributed cloud, datacenter and service providers.
 
 
