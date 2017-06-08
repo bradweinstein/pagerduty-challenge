@@ -225,16 +225,55 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Triggering an incident 
 
+```JSON
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
+  "incident": {
+    "type": "incident",
+    "title": "Lassy fell down the well!!",
+    "service": {
+      "id": "[SERVICE-ID]",
+      "type": "service_reference"
+    },
+    "incident_key": "baf7cf21b1da41b4b0221008339ff357",
+    "body": {
+      "type": "incident_body",
+      "details": "Lassy has fallen down the well in this region. Please read http://www.imdb.com/title/tt0110305/ for further information. If unable to help Lassy out of the well, Lassy could safe itself within 5 minutes."
+    },
+    "escalation_policy": {
+      "id": "[DEVOPS ESC POLICY]",
+      "type": "escalation_policy_reference"
+    }
+  }
+}' 'https://api.pagerduty.com/incidents'
+```
+<p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentcreated.png"></p>
+
+
+
 ### Acknowledge the Incident
+
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentack.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentactions.png">
+ 
 
 ### Using Response Mobilizer 
 
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddresponsers.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdnotifyresponders.png">
+
+
+
 ### Using Subscriber Notification
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentack.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdopenack.png">
+
 
 ### Adding Notes
 
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddnote.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdnoteadded.png">
+
+
+
 ### Resolving via mobile app
 
+<p align="left"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdacktimeline.png">
 
 ## Log Entries via API
 
