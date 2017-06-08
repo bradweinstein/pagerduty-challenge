@@ -111,6 +111,10 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 ### Create a on-call schedule among 5 users through UI
 
+<p align="left"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"></p>
+
+
+
 ### Create an Escalation Policy using API
 
 ### Setup contact methods for 2 user profiles through UI
