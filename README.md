@@ -9,10 +9,10 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 
 ## Main features
 
-* Platform collects events from monitoring systems, triages what’s important, and involves the right people for fast incident resolution
-* Visualizes the health of applications, services, and infrastructure while managing incident response workflows all in one place.
-* Inspects the performance and efficiency from system level down to the user level. Optimized to generate reports to measure operational efficiency, user productivity, and trends and patterns of recurring incidents.
-* Built-in integrations with ITSM and ChatOps tools to recruit, collaborate, and share knowledge. Going beyond your on-call responders and mobilize to address incidents in real time.
+* The Pagerduty platform collects events from monitoring systems, triages what’s important, and involves the right people for a faster incident resolution response.
+* Uses big-data visualizations to allow insight into the health of applications, services, and infrastructure while managing incident response workflows all in one place.
+* Inspects the performance and efficiency from system level down to the user level. Pagerduty can be optimized to generate reports to measure operational efficiency, user productivity, and trends and patterns of recurring incidents.
+* Includes Built-in integrations with ITSM and ChatOps tools to recruit, collaborate, and share knowledge. Go beyond your on-call responders and mobilize experts to quickly address incidents in real time.
 * PagerDuty is an always-on solution with guaranteed delivery by using globally distributed cloud, datacenter and service providers.
 
 
@@ -21,7 +21,7 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 ## Table of Contents
 
 * [Setup](#setup)
-  * [Trial Creation](#create-pagerduty-trial)
+  * [Trial Creation](#create-a-pagerduty-trial)
 * [Account Setup](#account-setup)
   * [Creating a team via API](#creating-a-team-via-api)
   * [Adding Users via API](#adding-5-users-to-team-using-api)
@@ -44,17 +44,19 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 
 ## Setup
 
-### Create PagerDuty trial
+### Create a PagerDuty trial
 
-Trial account created under `bradwtesting.pagerduty.com` at PagerDuty.com
+You can create a trial account created at PagerDuty.com
 
 <img width=15% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsignup.png">
 
-Skipped through configuration wizard and enabled platform API access. I will be using PagerDuty's API v2, and associated documentation can be found [here](https://v2.developer.pagerduty.com).
+For this trial I've used the account of `bradwtesting.pagerduty.com`
+
+If you are looking to fast forward your education of PagerDuty, you can optionally skip the configuration wizard and enable platform API access. To follow this exercise we will be using PagerDuty's API v2, with associated documentation that can be found [here](https://v2.developer.pagerduty.com).
 
 <p align="left"><img width=20% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdapiaccess.png"></p>
 
-API v2 access keys can be viewed and created under Configuration > API Access. I've created a v2 read/write key for the purposes of this exercise.
+PagerDuty API v2 access keys can be viewed and created under Configuration > API Access. I've created a v2 read/write key for the purposes of this exercise. Remember, API calls with PagerDuty are always going to be in `JSON` format with authorization tokens in the header to keep everything secure. Always have your token handy for using API requests.
 
 <p align="left"><img width=40% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdexampleapi.png"></p>
 
@@ -67,7 +69,11 @@ API v2 access keys can be viewed and created under Configuration > API Access. I
  
 ## Account Setup
 
+For the purposes of this workflow we will be creating a basic team, adding members, and associated schedule and escalation policies. Finally we will create a service and add any additional context information along the way.
+
 ### Creating a team via API
+
+Creating a team with the PagerDuty API is pretty simple. You can copy paste the below text, replacing your `SECRET TOKEN` and will recieve a `201` response upon acceptance.
 
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
@@ -83,7 +89,8 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Adding five users to team using API
 
-Created 5 users using the API, then added them to the team.
+Like the task before us, we can create five users using the API, then added them to the team. Among the team members I've manually varied their user id from 1 through 5, and altered their colors for quick identification in the PagerDuty UI. Sleepless nights belong to the red shirts on the Grognards team. This command optionally takes in a requester's email for log identification. Feel free to not include it!
+
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
   "user": {
@@ -101,7 +108,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 <p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddusersnoteam.png"></p>
 
 
-For each user, they were added to the Grognards team.
+For each user, we add them to the Grognards team. Matriculating through the `USERID` for each user. If this was done in a larger script one may think about handling `TEAMID` AND `USERID`s as variables.
 
 ```JSON
 curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' 'https://api.pagerduty.com/teams/[TEAMID]/users/[USERID]'
@@ -111,11 +118,18 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 ### Create a on-call schedule among five users through UI
 
+Through the UI we will add everyone we want to the on-call schedule. Feel free to make this as simple or as complicated as you like. In my example I've let all the brad-Xs alternate one on call week off every other month. I'd hope they can appreciate it.
+
 <img width=55% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"><img width=45% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
 
 
 
 ### Create an Escalation Policy using API
+
+To create an escalation policy you need a little information to get started. You need to retreieve the `USERID`, `TEAMID` and a `SERVICEID` if attaching to a service from the PagerDuty platform. You'll find that at the end of each url when browsing elements in the PagerDuty web UI, or you can pull them down as part of a larger script.
+
+For this policy we are subjecting Brad-5, the newest member of the team to be the first at bat for handling problems. 
+
 
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
@@ -143,7 +157,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     "num_loops": 2,
     "teams": [
       {
-        "id": "[Grognards-team-ID",
+        "id": "[Grognards-team-ID"],
         "type": "team_reference"
       }
     ],
@@ -157,13 +171,17 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Setup contact methods for two user profiles through UI
 
-Setup repeated for Brad-2
+For the purposes of this test I've set up a few profiles with SMS, email and iOS push notification capabilities. I suggest doing at least one during your trial of PagerDuty.
 
 <p align="left"><img width=65% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdusercontact.png"></p>
 
 
 
 ### Create a Service using the API
+
+As a majority of PagerDuty customers use an assortment of out of the box integrations (seen here)[https://www.pagerduty.com/integrations/], we've elected to show how to create one from scratch, and we'll later use this same service to handle an incident.
+
+For this service I've also gone ahead and added the escalation policies we've made before. 
 
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
@@ -221,7 +239,11 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ## Incident Response WorkFlow
 
+For this portion of the demo we would like people to get in touch with how an incident is handled in real time. By creating an incident via API, you can test how team members will react and handle situations on the go. 
+
 ### Triggering an incident 
+
+In this issue you'll notice we've opened an incident with "Lassy" falling down the well. We've attached it to the previously created service, and escalation policy outlined before.
 
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
@@ -250,26 +272,36 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Acknowledge the Incident
 
+From iOS we can see the incident and the actions we can take to response immediately.
+
 <img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentack.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentactions.png">
  
 
 ### Using Response Mobilizer 
 
+Often members will want to mobilize teammates early to respond to an issue. This is two clicks within the PagerDuty mobile app.
+
 <img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddresponsers.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdnotifyresponders.png">
 
 
-
 ### Using Subscriber Notification
+
+We can also subscribe users regardless of team to the same issue.
+
 <img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdopenack.png">
 
 
 ### Adding Notes
+
+To decrease confusion members will add notes about the progress of an issue or updates taken to remediate the incident.
 
 <img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddnote.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdnoteadded.png">
 
 
 
 ### Resolving via mobile app
+
+At the end of the day the goal is quicker response time. If you think this isn't a pressing issue, you can 1 click resolve an incident and get on with your day.
 
 <img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdacktimeline.png">
 
@@ -332,8 +364,7 @@ Response:
 
 ## Conclusion
 
-After completing this technical challenge I feel confident I could complete a PagerDuty demo, troubleshooting or installation session. I'd like to give my thanks to the PagerDuty crew for letting me attempt this challenge.
-
+After completing this technical challenge I feel confident I could complete a PagerDuty demo, troubleshooting or installation session. 
 If there are any questions please feel free to reach out via [email](mailto:bradleyseth.weinstein@gmail.com) or [LinkedIn](https://www.linkedin.com/in/bradleysweinstein/)
 
 
