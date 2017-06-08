@@ -111,7 +111,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 ### Create a on-call schedule among five users through UI
 
-<img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
+<img width=55% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"><img width=45% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
 
 
 
