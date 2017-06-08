@@ -46,7 +46,7 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
 
 ### Create a PagerDuty trial
 
-You can create a trial account created at PagerDuty.com
+You can create a trial account at PagerDuty.com with a 14 day license. You'll only need one hour to get going with this exercise.
 
 <img width=15% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsignup.png">
 
