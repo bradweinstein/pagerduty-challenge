@@ -179,7 +179,8 @@ For the purposes of this test I've set up a few profiles with SMS, email and iOS
 
 ### Create a Service using the API
 
-As a majority of PagerDuty customers use an assortment of out of the box integrations (seen here)[https://www.pagerduty.com/integrations/], we've elected to show how to create one from scratch, and we'll later use this same service to handle an incident.
+As a majority of PagerDuty customers use an assortment of out of the box integrations [seen here]
+(https://www.pagerduty.com/integrations/), we've elected to show how to create one from scratch, and we'll later use this same service to handle an incident.
 
 For this service I've also gone ahead and added the escalation policies we've made before. 
 
