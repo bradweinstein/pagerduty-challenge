@@ -111,9 +111,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 ### Create a on-call schedule among 5 users through UI
 
-<p align="left"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"></p>
-
-<p align="left"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
+<img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
 
 
 
@@ -273,18 +271,73 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Resolving via mobile app
 
-<p align="left"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdacktimeline.png">
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdacktimeline.png">
 
 ## Log Entries via API
 
+Log Entries can be collected via API, for brevifty of this document I can include the response for further documentation. I used the following command to collect the logs:
+
+```bash
+curl -X GET --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' 'https://api.pagerduty.com/incidents/[LASSY-INCIDENT-ID]/log_entries?time_zone=UTC&is_overview=false&include%5B%5D=incidents&include%5B%5D=services&include%5B%5D=channels&include%5B%5D=teams'
+```
+
+Response:
+```JSON
+{
+  "log_entries": [
+    {
+      "id": "[INCIDENTID]",
+      "type": "resolve_log_entry",
+      "summary": "Resolved by brad-1",
+      "self": "https://api.pagerduty.com/log_entries/[INCIDENTID]",
+      "html_url": null,
+      "created_at": "2017-06-08T01:24:05Z",
+      "agent": {
+        "id": "[USERID]",
+        "type": "user_reference",
+        "summary": "brad-1",
+        "self": "https://api.pagerduty.com/users/[USERID]",
+        "html_url": "https://bradwtesting.pagerduty.com/users/[USERID]"
+      },
+      "channel": {
+        "type": "mobile"
+      },
+      "service": {
+        "id": "[SERVICEID]",
+        "name": "My Neato Hacking Website",
+        "description": "Services we wish upon our enemies.",
+        "auto_resolve_timeout": 14400,
+        "acknowledgement_timeout": 600,
+        "created_at": "2017-06-08T00:48:01Z",
+        "status": "active",
+        "last_incident_timestamp": "2017-06-08T01:13:27Z",
+        "teams": [
+          {
+            "id": "[TEAMID]",
+            "name": "Grognards",
+            "description": "Devops Team",
+            "type": "team",
+            "summary": "Grognards",
+            "self": "https://api.pagerduty.com/teams/[TEAMID]",
+            "html_url": "https://bradwtesting.pagerduty.com/teams/[TEAMID]",
+            "default_role": "manager",
+            "privilege": null
+          }
+        ],
+        
+     ...
+     
+```
 
 
 ## Conclusion
 
-After completing this technical challenge I feel confident I could easily complete a PagerDuty troubleshooting or installation session. I'd like to give my thanks to the Datadog crew for letting me attempt this challenge.
+After completing this technical challenge I feel confident I could complete a PagerDuty demo, troubleshooting or installation session. I'd like to give my thanks to the PagerDuty crew for letting me attempt this challenge.
 
 If there are any questions please feel free to reach out via [email](mailto:bradleyseth.weinstein@gmail.com) or [LinkedIn](https://www.linkedin.com/in/bradleysweinstein/)
 
 
 ##### Helpful Links
 * [PagerDuty API v2](https://v2.developer.pagerduty.com)
+* [PagerDuty API Reference](https://v2.developer.pagerduty.com/v2/page/api-reference#!/API_Reference/get_api_reference)
+
