@@ -126,7 +126,7 @@ Through the UI we will add everyone we want to the on-call schedule. Feel free t
 
 ### Create an Escalation Policy using API
 
-To create an escalation policy you need a little information to get started. You need to retreieve the `USERID`, `TEAMID` and a `SERVICEID` if attaching to a service from the PagerDuty platform. You'll find that at the end of each url when browsing elements in the PagerDuty web UI, or you can pull them down as part of a larger script.
+To create an escalation policy you need a little information to get started. You need to retrieve the `USERID`, `TEAMID` and a `SERVICEID` if attaching to a service from the PagerDuty platform. You'll find that at the end of each url when browsing elements in the PagerDuty web UI, or you can pull them down as part of a larger script.
 
 For this policy we are subjecting Brad-5, the newest member of the team to be the first at bat for handling problems. 
 
@@ -171,7 +171,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Setup contact methods for two user profiles through UI
 
-For the purposes of this test I've set up a few profiles with SMS, email and iOS push notification capabilities. I suggest doing at least one during your trial of PagerDuty.
+For the purposes of this test I've set up a few profiles with SMS, email and iOS push notification capabilities. I suggest configuring at least one contact method during your trial of PagerDuty.
 
 <p align="left"><img width=65% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdusercontact.png"></p>
 
@@ -237,13 +237,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 
 
-## Incident Response WorkFlow
+## Incident Response Workflow
 
-For this portion of the demo we would like people to get in touch with how an incident is handled in real time. By creating an incident via API, you can test how team members will react and handle situations on the go. 
+For this portion of the demo we would like people to get an idea of how an incident is handled in real time. By creating an incident via the PagerDuty API, you can test how team members will react and handle situations on the go. 
 
 ### Triggering an incident 
 
-In this issue you'll notice we've opened an incident with "Lassy" falling down the well. We've attached it to the previously created service, and escalation policy outlined before.
+In this issue you'll notice we've opened an incident with "Lassy" falling down the well. We've attached this incident to the service and escalation policy outlined before.
 
 ```JSON
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
@@ -357,7 +357,7 @@ Response:
           }
         ],
         
-     ...
+     "...": "..."
      
 ```
 
