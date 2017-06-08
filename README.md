@@ -24,11 +24,11 @@ Organizations taking advantage of the PagerDuty platform can visualize the healt
   * [Trial Creation](#create-pagerduty-trial)
 * [Account Setup](#account-setup)
   * [Creating a team via API](#creating-a-team-via-api)
-  * [Adding Users](#adding-5-users-to-team-using-api)
-  * [Creating an on-call schedule](#create-a-on-call-schedule-among-5-users-through-ui)
+  * [Adding Users via API](#adding-5-users-to-team-using-api)
+  * [Creating an on-call schedule via UI](#create-a-on-call-schedule-among-5-users-through-ui)
   * [Creating an escalation policy via API](#create-an-escalation-policy-using-api)
-  * [Creating user profiles](#setup-contact-methods-for-2-user-profiles-through-ui)
-  * [Creating user profiles](#create-a-service-using-the-api)
+  * [Creating user profiles via UI](#setup-contact-methods-for-2-user-profiles-through-ui)
+  * [Creating a service via API](#create-a-service-using-the-api)
 * [Incident Response Workflow](#incident-response-workflow)
   * [Triggering an incident via PagerDuty API](#triggering-an-incident)
   * [Acknowleding Incidents via PagerDuty mobile](#acknowledge-the-incident)
@@ -113,9 +113,49 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 <p align="left"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"></p>
 
+<p align="left"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
+
 
 
 ### Create an Escalation Policy using API
+
+```JSON
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'From: [PRIVATE EMAIL]' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
+  "escalation_policy": {
+    "type": "escalation_policy",
+    "name": "DevOps Team Escalation Policy",
+    "escalation_rules": [
+      {
+        "escalation_delay_in_minutes": 30,
+        "targets": [
+          {
+            "id": "[UID OF BRAD-5]",
+            "type": "user_reference"
+          }
+        ]
+      }
+    ],
+    "repeat_enabled": true,
+    "services": [
+      {
+        "id": "[SERVICE-ID]",
+        "type": "service_reference"
+      }
+    ],
+    "num_loops": 2,
+    "teams": [
+      {
+        "id": "[Grognards-team-ID",
+        "type": "team_reference"
+      }
+    ],
+    "description": "Escalation for devops/brad-x team."
+  }
+}' 'https://api.pagerduty.com/escalation_policies'
+```
+<p align="left"><img width=65% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdescpolicy.png"></p>
+
+
 
 ### Setup contact methods for 2 user profiles through UI
 
