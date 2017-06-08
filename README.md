@@ -275,7 +275,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ## Log Entries via API
 
-Log Entries can be collected via API, for brevifty of this document I can include the response for further documentation. I used the following command to collect the logs:
+Log Entries can be collected via API, for brevity of this document I reduced the response for which can be uploaded at request. I used the following command to collect the logs:
 
 ```bash
 curl -X GET --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' 'https://api.pagerduty.com/incidents/[LASSY-INCIDENT-ID]/log_entries?time_zone=UTC&is_overview=false&include%5B%5D=incidents&include%5B%5D=services&include%5B%5D=channels&include%5B%5D=teams'
