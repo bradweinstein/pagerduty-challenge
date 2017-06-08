@@ -157,7 +157,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     "num_loops": 2,
     "teams": [
       {
-        "id": "[Grognards-team-ID"],
+        "id": "[Grognards-team-ID]",
         "type": "team_reference"
       }
     ],
