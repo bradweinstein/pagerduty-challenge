@@ -81,7 +81,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 <p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdteamsapi.png"></p>
 
 
-### Adding 5 users to team using API
+### Adding five users to team using API
 
 Created 5 users using the API, then added them to the team.
 ```JSON
@@ -109,7 +109,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 <p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdaddusersteammed.png"></p>
 
 
-### Create a on-call schedule among 5 users through UI
+### Create a on-call schedule among five users through UI
 
 <img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdscheduling.png"><img width=50% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdsimpleschedule.png"></p>
 
@@ -155,7 +155,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 
 
-### Setup contact methods for 2 user profiles through UI
+### Setup contact methods for two user profiles through UI
 
 Setup repeated for Brad-2
 
