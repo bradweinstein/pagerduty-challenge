@@ -268,7 +268,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 <p align="left"><img width=85% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentcreated.png"></p>
 
+An incident will appear in a user's inbox, push notification or email depending on their subscription method.
 
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdnewincident.png">
 
 ### Acknowledge the Incident
 
