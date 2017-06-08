@@ -260,7 +260,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 
 ### Using Subscriber Notification
-<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdincidentack.png"><img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdopenack.png">
+<img width=35% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdopenack.png">
 
 
 ### Adding Notes
