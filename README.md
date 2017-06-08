@@ -159,9 +159,65 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ### Setup contact methods for 2 user profiles through UI
 
+Setup repeated for Brad-2
+
+<p align="left"><img width=65% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdusercontact.png"></p>
+
+
+
 ### Create a Service using the API
 
-
+```JSON
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/vnd.pagerduty+json;version=2' --header 'Authorization: Token token=[SECRETTOKEN]' -d '{
+  "service": {
+    "type": "service",
+    "name": "My Neato Hacking Website",
+    "description": "Services we wish upon our enemies.",
+    "auto_resolve_timeout": 14400,
+    "acknowledgement_timeout": 600,
+    "status": "active",
+    "escalation_policy": {
+      "id": "[DEVOPS ESC POLICY ID]",
+      "type": "escalation_policy_reference"
+    },
+    "incident_urgency_rule": {
+      "type": "use_support_hours",
+      "during_support_hours": {
+        "type": "constant",
+        "urgency": "high"
+      },
+      "outside_support_hours": {
+        "type": "constant",
+        "urgency": "low"
+      }
+    },
+    "support_hours": {
+      "type": "fixed_time_per_day",
+      "time_zone": "America/New_York",
+      "start_time": "09:00:00",
+      "end_time": "17:00:00",
+      "days_of_week": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "scheduled_actions": [
+      {
+        "type": "urgency_change",
+        "at": {
+          "type": "named_time",
+          "name": "support_hours_start"
+        },
+        "to_urgency": "high"
+      }
+    ]
+  }
+}' 'https://api.pagerduty.com/services'
+```
+<p align="left"><img width=65% src="https://github.com/bradweinstein/pagerduty-challenge/blob/master/images/pdserviceapi.png"></p>
 
 
 
